@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\siaal\\source\\repos\\TestIq\\TestIq\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TestIq.bundle.scp.css",
+      "PackagePath": "staticwebassets\\TestIq.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\siaal\\source\\repos\\TestIq\\TestIq\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\siaal\\source\\repos\\TestIq\\TestIq\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\siaal\\source\\repos\\TestIq\\TestIq\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\siaal\\source\\repos\\TestIq\\TestIq\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TestIq.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TestIq.props",
+      "PackagePath": "build\\TestIq.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TestIq.props",
+      "PackagePath": "buildMultiTargeting\\TestIq.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TestIq.props",
+      "PackagePath": "buildTransitive\\TestIq.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

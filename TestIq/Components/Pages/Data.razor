@@ -1,0 +1,113 @@
+﻿@page "/"
+@attribute [StreamRendering]
+
+@using TestIq.Data
+@inject IJSRuntime JsRuntime
+
+@inject MongoDbServices mongoDbServices
+@rendermode InteractiveServer
+
+
+<PageTitle>Test Iq</PageTitle>
+
+<h1>Data From Mongo</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Страна проживания</th>
+            <th>Город</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var cust in Customers)
+        {
+            <tr>
+                
+                <td>@cust.Name</td>
+                <td>@cust.LastName</td>
+                <td>@cust.Country</td>
+                <td>@cust.City</td>
+                <td>
+                    <button @onclick="() => Edit(cust.Id)">Редактировать</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+<EditForm EditContext="editContext"  OnSubmit="Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <label>Name: </label>
+    <input @bind="Customer.Name">
+    <label>LastName: </label>
+    <input @bind="Customer.LastName">
+    <label>Country: </label>
+    <input @bind="Customer.Country">
+    <label>City: </label>
+    <input @bind="Customer.City">
+
+    <p>
+        <button type="submit">Сохранить</button>
+        <button @onclick="Reset">Сбросить</button>
+    </p>
+</EditForm>
+
+
+
+
+@code {
+    CustomerModel Customer = new CustomerModel();
+    List<CustomerModel> Customers = new List<CustomerModel>();
+    EditContext? editContext;
+
+
+
+    protected override void  OnInitialized()
+    {
+        GetCustomers();
+        editContext = new EditContext(Customer);
+    }
+
+
+
+    private  void GetCustomers()
+    {
+        Customers =  mongoDbServices.GetCustomers();
+    }
+
+    private async Task Save()
+    {
+        if (editContext != null && editContext.Validate())
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Успешно");
+            mongoDbServices.SaveUpdate(Customer);
+            Reset();
+            GetCustomers();
+        }
+
+    }
+
+    private void Reset()
+    {
+        Customer = new CustomerModel();
+        editContext = new EditContext(Customer);
+    }
+
+    private void Edit(string customerId)
+    {
+        Customer = mongoDbServices.GetCustomer(customerId);
+    }
+}
